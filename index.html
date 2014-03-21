@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Pradeep Patro" >
+    <title>WebSockets - Serverpush</title>
+    <link href="./assets/bootstrap.css" rel="stylesheet" />
+    <link href="./assets/bootstrap-responsive.css" rel="stylesheet" />
+    <style>
+      body{ padding-top: 20px;}
+      #content{ height: 360px; overflow-x:hidden;display:block;word-wrap:break-word; }
+      #user-status{ height: 460px; overflow-x:hidden;display:block;word-wrap:break-word; }
+      .text-small{ font-size: 11px;}
+      label { margin-right: 2%; }
+      .message { position: absolute; left: 15%; }
+      .msg{ margin-bottom: 5px; border-bottom: 1px solid #efefef; position:relative; padding-right:10px;}
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="alert alert-info">WebSockets - Simple chat</div>
+      </div>
+      <div class="row-fluid">
+        <div class="span3 well">
+          <h5>Status</h5>
+          <div id="user-status"></div>
+        </div>
+        <div class="span9" id="chat">
+          <div class="well">
+            <h5>Messages</h5>
+            <div id="content"></div>
+          </div>
+          <div class="well">
+            <div class="input-prepend">
+              <span class="add-on" id="status">Connecting ...</span>
+              <input class="input-xxlarge" type="text" id="input" disabled="disabled" />
+            </div>
+          </div>
+        </div>
+      </div>
+    <div>
+    <script src="./assets/jquery.min.js"></script>
+    <script src="./assets/control.js"></script>
+  </body>
+</html>
