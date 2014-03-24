@@ -10,6 +10,6 @@ Server side socket url can be initialised from any of these server to interact
 
 1. Nodejs (requires *websocket* module)
 2. PHP (requires *php-json* module)
-3. Ruby
+3. Ruby (requires websocket_driver, eventmachine, json)
 4. Python
 5. Servlet
