@@ -39,32 +39,55 @@ class WS
 end
 
 module Connection
-  attr_writer :userName
+  attr_writer :userName, :client, :history, :type, :retMsg, :userType
 
   def initialize
-    @driver = WebSocket::Driver.server(self)
+    @type = [ 'success', 'inverse', 'default', 'warning', 'error', 'info', 'primary' ]
+    @history = []
+    @client = []
 
-    @driver.on(:connect) do
+    @driver = WebSocket::Driver.server(self)
+    #@client.push(@driver)
+
+    @driver.on(:connect) { |e|
       if WebSocket::Driver.websocket?(@driver.env)
-        @userName = false
         @driver.start
+        @userName = false
+        @userType = false
+        puts "Connection Accepted"
       else
         # handle other HTTP requests
       end
-    end
+    }
 
-    @driver.on(:message) { |e| @driver.text(e.data) }
-    @driver.on(:close)   { |e| close_connection_after_writing }
+    @driver.on(:message) { |e|
+      if @userName == false
+         @userName = e.data
+         num = Random.rand(0...6)
+         @userType =  @type[num]
+         msg = {:type => "color", :data => @userType}
+         @retMsg = JSON.generate(msg)
+      elsif defined?(@userName) && (@userName != '') 
+         msg = {:time => Time.now.to_i,
+                :text => e.data,
+                :author => @userName,
+                :color => @userType
+         }
+         finalMsg = {:type => 'message', :data => msg}
+         @retMsg = JSON.generate(finalMsg)
+      else
+         @retMsg = e.data
+      end
+     # for drive in @client
+     @driver.text(@retMsg)
+     # end
+    }
+    @driver.on(:close)   { |e|
+      close_connection_after_writing
+    }
   end
 
   def receive_data(data)
-    puts data.encoding
-    puts data.force_encoding("iso-8859-1").force_encoding("utf-8")
-    puts data.force_encoding("UTF-8").to_json
-    puts @userName
-    if @userName == false
-      data = "msg"
-    end
     @driver.parse(data)
   end
 
