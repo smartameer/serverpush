@@ -1,0 +1,31 @@
+body {
+  padding-top: 20px;
+}
+#content {
+  height: 360px;
+  overflow-x: hidden;
+  display: block;
+  word-wrap: break-word;
+}
+#user-status{
+  height: 460px;
+  overflow-x: hidden;
+  display: block;
+  word-wrap: break-word;
+}
+.text-small{
+  font-size: 11px;
+}
+label {
+  margin-right: 2%;
+}
+.message {
+  position: absolute;
+  left: 15%;
+}
+.msg {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #efefef;
+  position: relative;
+  padding-right: 10px;
+}

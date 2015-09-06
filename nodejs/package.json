@@ -4,7 +4,7 @@
   "description": "Nodejs based serverpush mechanism for chat application",
   "main": "server.js",
   "dependencies": {
-    "websocket": "^1.0.8"
+    "websocket": "^1.0.21"
   },
   "devDependencies": {},
   "scripts": {
@@ -17,6 +17,7 @@
   },
   "keywords": [
     "serverpush",
+    "html5",
     "chat"
   ],
   "author": "smartameer <pradeeppatro16@gmail.com>",
