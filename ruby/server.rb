@@ -1,6 +1,3 @@
-###
-## @author : Sushma Pathak
-##
 require 'websocket/driver'
 require 'eventmachine'
 require 'json'
